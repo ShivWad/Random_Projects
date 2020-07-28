@@ -58,7 +58,5 @@ def GeTInfo (data):
 
 
 
-# getRequest('cn9vhty9hIakzQ','AVS','https://www.reddit.com/','read')
-# postRequest('ZmI0byhzE2dCkBYfcq9QDaLNUyE','https://www.reddit.com/','PxkcAcVGG-VRH2aj0Q4bkoJ7t4s','cn9vhty9hIakzQ','ua')
-info = Subscribe('Music','UserAgent','92251602747-j8XNGVGUvbIGwfxigTxkIhq_UeE')
+info = Subscribe('Music','UserAgent','')
 print(info)
