@@ -1,23 +1,36 @@
 from selenium import webdriver
-from bs4 import BeautifulSoup as bs
-import pandas as pd
-from selenium.common import exceptions
-driver = webdriver.Chrome(executable_path = 'S:\Python\chromedriver')
-EmployeeDataList = []
-def Find_Employee(agency):
-    driver.get('http://kanview.ks.gov/PayRates/PayRates_Agency.aspx')
-    butt = driver.find_element_by_partial_link_text(agency)
-    butt.click()
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import time
 
-    for i in range(5):
-        link = driver.find_element_by_id('MainContent_uxLevel2_JobTitles_uxJobTitleBtn_' + str(i))
-        link.click()
-        data = bs(driver.page_source,'lxml')
-        emp_table = data.table
-        df = pd.read_html(str(emp_table),header=0)
-        EmployeeDataList.append(df)
-        driver.back()
-agency = input()
-Find_Employee(agency)
-print(EmployeeDataList)
-driver.close()
+# Replace below path with the absolute path
+# to chromedriver in your computer
+driver = webdriver.Chrome('S:\Python/chromedriver')
+
+driver.get("https://web.whatsapp.com/")
+wait = WebDriverWait(driver, 1000)
+
+# Replace 'Friend's Name' with the name of your friend
+# or the name of a group
+target = "Saishaaaaaaaa"
+
+# Replace the below string with your own message
+string = 'What up'
+x = int(input())
+if x == 1:
+	x_arg = '//span[contains(@title,' + target + ')]'
+	group_title = wait.until(EC.presence_of_element_located((
+		By.XPATH, x_arg)))
+	group_title.click()
+	inp_xpath = '//div[@class="input"][@dir="auto"][@data-tab="1"]'
+	input_box = wait.until(EC.presence_of_element_located((
+		By.XPATH, inp_xpath)))
+	print('here')
+	for i in range(100):
+		print('Hi')
+		input_box.send_keys(string + Keys.ENTER)
+
+		time.sleep(1)
+
